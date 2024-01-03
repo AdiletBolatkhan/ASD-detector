@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic Screen Recorder</title>
+</head>
+<body>
+    <div id="videoContainer">
+        <video id="videoElement" controls>
+            <source src="./ui/content/Pablo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script>
+        const videoElement = document.getElementById('videoElement');
+let mediaRecorder;
+let recordedBlobs;
+
+// Function to handle the recording start
+function startRecording(stream) {
+    recordedBlobs = [];
+
+    try {
+        mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+    } catch (e) {
+        console.error('Exception while creating MediaRecorder:', e);
+        alert('MediaRecorder not supported or wrong MIME type.');
+        return;
+    }
+
+    mediaRecorder.ondataavailable = event => {
+        if (event.data && event.data.size > 0) {
+            recordedBlobs.push(event.data);
+        }
+    };
+
+    mediaRecorder.onstop = createDownloadLink;
+
+    mediaRecorder.start();
+}
+
+// Function to create download link
+function createDownloadLink() {
+    const superBuffer = new Blob(recordedBlobs, { type: 'video/webm' });
+    const url = URL.createObjectURL(superBuffer);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = 'recordedVideo.webm';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    }, 100);
+}
+
+videoElement.addEventListener('play', () => {
+    if (typeof videoElement.captureStream !== 'function') {
+        alert('Your browser does not support captureStream method');
+        return;
+    }
+
+    const stream = videoElement.captureStream();
+    startRecording(stream);
+}, false);
+
+videoElement.addEventListener('ended', () => {
+    if (mediaRecorder && mediaRecorder.state === 'recording') {
+        mediaRecorder.stop();
+    }
+}, false);
+
+    </script>
+</body>
+</html>

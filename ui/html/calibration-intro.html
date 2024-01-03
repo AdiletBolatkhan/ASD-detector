@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calibration Introduction</title>
+    <link rel="stylesheet" href="./ui/css/style.css">
+    
+</head>
+
+<body class="calibration-intro">
+    <div class = "heading">
+        <img src="./ui/pictures/noroot.png" alr="Logo" class="logo" >
+    </div>  
+    <div class="content-section">
+        <h1>Let's Get Ready!</h1>
+        <p>Hey there! We're going to play a fun game where you'll look at some dots on the screen.</p>
+        <button id="startCalibration">Start Calibration</button>
+    </div>
+    <!-- Calibration Introduction Script -->
+    <script>
+        document.getElementById('startCalibration').addEventListener('click', function() {
+            window.location.href = '/calibration';  // Redirects to the actual calibration page
+        });
+    </script>
+</body>
+
+</html>

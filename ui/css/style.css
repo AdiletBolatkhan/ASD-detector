@@ -1,0 +1,106 @@
+
+.point {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    display: none;
+    z-index: 10;  /* Ensure they appear above the video */
+}
+
+#point1 { top: 5%;  left: 5%; }    /* Верхний левый угол */
+#point2 { top: 5%;  left: 95%; }   /* Верхний правый угол */
+#point3 { top: 95%; left: 5%; }    /* Нижний левый угол */
+#point4 { top: 95%; left: 95%; }   /* Нижний правый угол */
+
+#point5 { top: 5%;  left: 50%; }   /* Верхний центр */
+#point6 { top: 95%; left: 50%; }   /* Нижний центр */
+#point7 { top: 50%; left: 5%; }    /* Центр слева */
+#point8 { top: 50%; left: 95%; }   /* Центр справа */
+
+#point9  { top: 35%; left: 35%; }  /* Центральный квадрат - верхний левый угол */
+#point10 { top: 35%; left: 65%; }  /* Центральный квадрат - верхний правый угол */
+#point11 { top: 65%; left: 35%; }  /* Центральный квадрат - нижний левый угол */
+#point12 { top: 65%; left: 65%; }  /* Центральный квадрат - нижний правый угол */
+
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+body.calibration-intro {
+    background-image: url('../pictures/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+.heading {
+    height: 200px;
+    width: 100%;
+}
+.logo {
+    margin-top: 10px;
+    height: 80px; /* Adjust if you want a specific height */
+    width: auto; /* Adjust if you want a specific width */
+}
+.content-section {
+    max-width: 500px;          /* Setting a maximum width to ensure readability */
+    margin: 0px auto;         /* Center the div horizontally and give it a top and bottom margin */
+    padding: 20px;             /* Add some space inside the div */
+    background-color: #f3f3f3; /* Light gray background color */
+    border-radius: 15px;       /* Rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for a lifted appearance */
+}
+
+.content-section h1 {
+    text-align: center;        /* Center-align the title */
+    margin-bottom: 20px;       /* Add some space below the title */
+    color: #333;               /* Dark gray color for the text */
+}
+
+.content-section p {
+    font-size: 18px;           /* Increase font size for better readability */
+    line-height: 1.6;          /* Increase line spacing */
+    color: #666;               /* Medium gray color for the text */
+    margin-bottom: 20px;       /* Add some space below the paragraph */
+}
+
+.content-section button {
+    display: block;            /* Display button as block */
+    width: 100%;               /* Make the button take full width of the div */
+    padding: 12px 20px;        /* Add padding to the button */
+    background-color: #3498db; /* Blue background color */
+    color: white;              /* White color for the button text */
+    border: none;              /* Remove any default borders */
+    border-radius: 5px;        /* Slightly rounded corners for the button */
+    font-size: 18px;           /* Increase font size for the button text */
+    cursor: pointer;           /* Change cursor to pointer when hovering over the button */
+}
+
+.content-section button:hover {
+    background-color: #2980b9; /* Slightly darker blue for the button hover state */
+}
+
+#videoContainer {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-color: #000;
+}
+
+#videoElement {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+

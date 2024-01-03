@@ -1,2 +1,1 @@
 # ASD-detector
-ASD-detector
